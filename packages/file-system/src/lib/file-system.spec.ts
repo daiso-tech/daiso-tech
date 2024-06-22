@@ -1,7 +1,9 @@
-import { fileSystem } from './file-system';
+import { describe, expect, test } from "vitest";
 
-describe('fileSystem', () => {
-  it('should work', () => {
-    expect(fileSystem()).toEqual('file-system');
-  });
+import { fileSystem } from "./file-system";
+
+describe("fileSystem", () => {
+    test("should work", () => {
+        expect(fileSystem()).toEqual("file-system");
+    });
 });

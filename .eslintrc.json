@@ -1,35 +1,120 @@
 {
-  "root": true,
-  "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {
-        "@nx/enforce-module-boundaries": [
-          "error",
-          {
-            "enforceBuildableLibDependency": true,
-            "allow": [],
-            "depConstraints": [
-              {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
-              }
+    "root": true,
+    "plugins": ["@nx"],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+            "plugins": [
+                "@nx",
+                "eslint-plugin-unicorn",
+                "eslint-plugin-sonarjs",
+                "eslint-plugin-regexp",
+                "eslint-plugin-import",
+                "eslint-plugin-simple-import-sort",
+                "eslint-plugin-only-error"
+            ],
+            "extends": [
+                "xo",
+                "plugin:unicorn/recommended",
+                "plugin:sonarjs/recommended-legacy",
+                "plugin:regexp/recommended"
+            ],
+            "rules": {
+                "@nx/enforce-module-boundaries": [
+                    "error",
+                    {
+                        "enforceBuildableLibDependency": true,
+                        "allow": [],
+                        "depConstraints": [
+                            {
+                                "sourceTag": "*",
+                                "onlyDependOnLibsWithTags": ["*"]
+                            }
+                        ]
+                    }
+                ],
+                "unicorn/no-array-method-this-argument": "off",
+                "sonarjs/no-duplicate-string": "off",
+                "no-useless-return": "off",
+                "unicorn/no-useless-undefined": "off",
+                "unicorn/no-null": "off",
+                "import/no-mutable-exports": "error",
+                "import/no-named-as-default": "error",
+                "import/no-named-as-default-member": "error",
+                "import/no-unused-modules": "error",
+                "import/named": "error",
+                "import/no-absolute-path": "error",
+                "import/no-dynamic-require": "error",
+                "import/no-self-import": "error",
+                "import/no-webpack-loader-syntax": "error",
+                "import/no-useless-path-segments": "error",
+                "import/first": "error",
+                "import/no-anonymous-default-export": "error",
+                "import/no-default-export": "error",
+                "import/no-extraneous-dependencies": "off",
+                "simple-import-sort/imports": "error",
+                "simple-import-sort/exports": "error",
+                "sort-imports": "off",
+                "import/order": "off",
+                "new-cap": "off",
+                "unicorn/prefer-top-level-await": "off"
+            },
+            "overrides": [
+                {
+                    "files": ["**/*.test.{js,ts,tsx}"],
+                    "rules": {
+                        "unicorn/consistent-function-scoping": "off"
+                    }
+                },
+                {
+                    "files": ["*.config.ts", "*.config.js", ".*rc.js"],
+                    "rules": {
+                        "unicorn/prefer-module": "off",
+                        "import/no-default-export": "off",
+                        "import/group-exports": "off",
+                        "sonarjs/no-duplicate-string": "off"
+                    }
+                }
             ]
-          }
-        ]
-      }
-    },
-    {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
-      "rules": {}
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
-      "rules": {}
-    }
-  ]
+        },
+        {
+            "files": ["*.ts", "*.tsx"],
+            "plugins": [
+                "eslint-plugin-typescript-enum",
+                "eslint-plugin-only-error"
+            ],
+            "extends": ["plugin:@nx/typescript", "xo-typescript"],
+            "parserOptions": {
+                "tsconfigRootDir": "./",
+                "project": [
+                    "tsconfig.base.json",
+                    "packages/*/tsconfig.lib.json",
+                    "packages/*/tsconfig.spec.json"
+                ]
+            },
+            "rules": {
+                "import/no-unresolved": "error",
+                "@typescript-eslint/sort-type-constituents": "error",
+                "typescript-enum/no-const-enum": "error",
+                "typescript-enum/no-enum": "error",
+                "@typescript-eslint/padding-line-between-statements": "off",
+                "@typescript-eslint/naming-convention": "off",
+                "@typescript-eslint/ban-types": "off",
+                "@typescript-eslint/no-unnecessary-type-arguments": "off"
+            }
+        },
+        {
+            "files": ["*.js", "*.jsx"],
+            "extends": ["plugin:@nx/javascript"],
+            "rules": {}
+        },
+        {
+            "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+            "plugins": ["eslint-plugin-prettier"],
+            "extends": ["prettier"],
+            "rules": {
+                "prettier/prettier": "error"
+            }
+        }
+    ]
 }

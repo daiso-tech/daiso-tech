@@ -24,6 +24,29 @@
             "options": {
                 "reportsDirectory": "../../coverage/packages/file-system"
             }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "options": {
+                "lintFilePatterns": [
+                    "packages/**/*.config.js",
+                    "packages/**/*.config.ts",
+                    "packages/**/*.js",
+                    "packages/**/*.ts"
+                ]
+            }
+        },
+        "lint-fix": {
+            "executor": "@nx/eslint:lint",
+            "options": {
+                "lintFilePatterns": [
+                    "packages/**/*.config.js",
+                    "packages/**/*.config.ts",
+                    "packages/**/*.js",
+                    "packages/**/*.ts"
+                ],
+                "fix": true
+            }
         }
     }
 }
