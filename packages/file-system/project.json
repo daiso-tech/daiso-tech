@@ -47,6 +47,13 @@
                 ],
                 "fix": true
             }
+        },
+        "check": {
+            "executor": "nx:run-commands",
+            "outputs": [],
+            "options": {
+                "command": "npx tsc --noEmit --project ./tsconfig.json"
+            }
         }
     }
 }
