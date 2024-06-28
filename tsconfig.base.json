@@ -16,6 +16,7 @@
         "baseUrl": ".",
         "paths": {
             "@daiso-tech/cache": ["packages/cache/src/index.ts"],
+            "@daiso-tech/collections": ["packages/collections/src/index.ts"],
             "@daiso-tech/file-system": ["packages/file-system/src/index.ts"]
         },
         "forceConsistentCasingInFileNames": true,

@@ -24,6 +24,7 @@
                         ]
                     }
                 ],
+                "sonar/function-name": "off",
                 "simple-import-sort/imports": "error"
             }
         },

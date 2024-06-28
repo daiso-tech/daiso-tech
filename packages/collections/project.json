@@ -1,0 +1,60 @@
+{
+    "name": "collections",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "packages/collections/src",
+    "projectType": "library",
+    "release": {
+        "version": {
+            "generatorOptions": {
+                "packageRoot": "dist\\{projectRoot}",
+                "currentVersionResolver": "git-tag"
+            }
+        }
+    },
+    "tags": [],
+    "targets": {
+        "nx-release-publish": {
+            "options": {
+                "packageRoot": "dist\\{projectRoot}"
+            }
+        },
+        "test": {
+            "executor": "@nx/vite:test",
+            "outputs": ["{options.reportsDirectory}"],
+            "options": {
+                "reportsDirectory": "../../coverage/packages/collections"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "options": {
+                "lintFilePatterns": [
+                    "packages/**/*.config.js",
+                    "packages/**/*.config.ts",
+                    "packages/**/*.js",
+                    "packages/**/*.ts"
+                ]
+            }
+        },
+        "lint-fix": {
+            "executor": "@nx/eslint:lint",
+            "options": {
+                "lintFilePatterns": [
+                    "packages/**/*.config.js",
+                    "packages/**/*.config.ts",
+                    "packages/**/*.js",
+                    "packages/**/*.ts"
+                ],
+                "fix": true
+            }
+        },
+        "check": {
+            "executor": "nx:run-commands",
+            "outputs": [],
+            "options": {
+                "cwd": "packages/file-system",
+                "command": "npx tsc --noEmit --project ./tsconfig.check.json"
+            }
+        }
+    }
+}
