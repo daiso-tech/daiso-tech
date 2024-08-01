@@ -3,7 +3,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
     root: __dirname,
-    cacheDir: "../../node_modules/.vite/packages/file-system",
+    cacheDir: "../../node_modules/.vite/packages/collections",
 
     plugins: [nxViteTsPaths()],
 
@@ -15,12 +15,12 @@ export default defineConfig({
     test: {
         watch: false,
         globals: true,
-        cache: { dir: "../../node_modules/.vitest/packages/file-system" },
+        cache: { dir: "../../node_modules/.vitest/packages/collections" },
         environment: "node",
         include: ["src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
         reporters: ["default"],
         coverage: {
-            reportsDirectory: "../../coverage/packages/file-system",
+            reportsDirectory: "../../coverage/packages/collections",
             provider: "v8",
         },
     },

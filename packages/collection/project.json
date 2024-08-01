@@ -1,7 +1,7 @@
 {
-    "name": "file-system",
+    "name": "collection",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "packages/file-system/src",
+    "sourceRoot": "packages/collection/src",
     "projectType": "library",
     "release": {
         "version": {
@@ -22,7 +22,7 @@
             "executor": "@nx/vite:test",
             "outputs": ["{options.reportsDirectory}"],
             "options": {
-                "reportsDirectory": "../../coverage/packages/file-system"
+                "reportsDirectory": "../../coverage/packages/collection"
             }
         },
         "lint": {
@@ -46,6 +46,14 @@
                     "packages/**/*.ts"
                 ],
                 "fix": true
+            }
+        },
+        "check": {
+            "executor": "nx:run-commands",
+            "outputs": [],
+            "options": {
+                "cwd": "packages/file-system",
+                "command": "npx tsc --noEmit --project ./tsconfig.check.json"
             }
         }
     }

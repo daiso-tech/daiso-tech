@@ -1,5 +1,5 @@
 {
-    "name": "@daiso-tech/file-system",
+    "name": "collection",
     "version": "0.0.1",
     "dependencies": {},
     "main": "./index.cjs",
